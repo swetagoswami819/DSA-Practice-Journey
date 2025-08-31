@@ -3,27 +3,29 @@ using namespace std;
 
 class Solution{
     public:
-    vector<vector<int>>ans;
-    vector<int>ds;
-       void DFS(TreeNode *root, int x){
+
+    
+       bool DFS(TreeNode *root, int x, vector<int> &ds){
  
         if(!root) return  false;
 
+         ds.push_back(root->val);
         if(root->val==x){
             return true;
         }
-
-        if(DFS(root->left,x) || DFS(root->right,x)){
+       
+        if(DFS(root->left,x,ds) || DFS(root->right,x,ds)){
             return true;
         }
-        arr.pop_back(x);
+        ds.pop_back();
         return false;   
        }
 
 
-       vector<vector<int>> rootToNodeTraversal(TreeNode * root){
-           if(root==NULL) return NULL;
-           DFS(root,7);
-           return ans;
+       vector<int> rootToNodeTraversal(TreeNode * root){
+        vector<int>ds;
+           if(root==NULL) return ds;
+           DFS(root,7,ds);
+           return ds;
        }
 }

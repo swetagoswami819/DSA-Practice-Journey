@@ -3,14 +3,14 @@ using namespace std;
 
 class Solution{
     public:
-    vector<int> NGE(vector<int>&arr){
+    vector<int> NSE(vector<int>&arr){
         int n =arr.size();
         vector<int>ans;
 
         stack<int>st;
 
         for(int i=n-1;i>=0;i--){
-            while(!st.empty() && st.top()<=arr[i]){
+            while(!st.empty() && st.top()>=arr[i]){
                 st.pop();
             }
 
@@ -32,7 +32,7 @@ class Solution{
 int main(){
     Solution sol;
     vector<int>arr={4,5,2,10,8};
-    vector<int>result=sol.NGE(arr);
+    vector<int>result=sol.NSE(arr);
     for(auto x:result){
         cout<<x<<" ";
     }

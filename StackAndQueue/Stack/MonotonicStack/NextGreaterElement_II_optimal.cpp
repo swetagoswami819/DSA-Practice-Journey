@@ -4,35 +4,32 @@ using namespace std;
 class Solution{
     public:
     vector<int> NGE(vector<int>&arr){
-        int n =arr.size();
+           int n =arr.size();
         vector<int>ans;
-
         stack<int>st;
 
-        for(int i=n-1;i>=0;i--){
-            while(!st.empty() && st.top()<=arr[i]){
+        for(int i=(2*n-1);i>=0;i--){
+            while(!st.empty() && st.top()<=arr[i%n]){
                 st.pop();
+
             }
 
-            if(st.empty()){
-                ans.push_back(-1);
+            if(i<n){
+                st.empty()?ans.push_back(-1) : ans.push_back(st.top());
             }
-
-            else{
-                ans.push_back(st.top());
-            }
-            st.push(arr[i]);
+            st.push(arr[i%n]);
         }
         reverse(ans.begin(),ans.end());
-        return ans;
-
+    
+    return ans;
     }
 };
 
 int main(){
     Solution sol;
-    vector<int>arr={4,5,2,10,8};
-    vector<int>result=sol.NGE(arr);
+    vector<int>nums1={1,3,4,5,2,7};
+    
+    vector<int>result=sol.NGE(nums1);
     for(auto x:result){
         cout<<x<<" ";
     }

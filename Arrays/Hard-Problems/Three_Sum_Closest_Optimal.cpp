@@ -28,9 +28,7 @@ int three_sum_closest(vector<int>&arr ,int target){
             else if(sum>target){
                 k--;
             }
-            else{
-
-            }
+           
 
         }
         

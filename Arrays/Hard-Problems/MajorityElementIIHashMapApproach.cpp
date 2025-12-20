@@ -4,20 +4,19 @@ using namespace std;
 class Solution {
 public:
     vector<int> majorityElement(vector<int>& nums) {
+        
         vector<int>ans;
         int n = nums.size();
-        unordered_map<int,int> freq;
+        int mn = (int)(n/3+1);
+        map<int,int> freq;
         for(int i=0;i<n;i++){
-            freq[i]++;
+            freq[nums[i]]++;
+            if(freq[nums[i]]==mn){
+                ans.push_back(nums[i]);
+            }
 
         }
-        
-      
-        for(auto &it : freq){
-            if(it.second>n/3){
-                ans.push_back(it.first);
-            }
-        }
+        sort(ans.begin(),ans.end());
         return ans;
     }
 };

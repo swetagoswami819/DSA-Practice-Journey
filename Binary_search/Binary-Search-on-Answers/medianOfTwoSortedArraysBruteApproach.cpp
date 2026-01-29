@@ -28,9 +28,11 @@ class Solution{
         while(i<m && j<n){
             if(arr1[i]<arr2[j]){
                 temp.push_back(arr1[i]);
+                i++;
             }
             else{
                 temp.push_back(arr2[j]);
+                j++;
             }
         }
 

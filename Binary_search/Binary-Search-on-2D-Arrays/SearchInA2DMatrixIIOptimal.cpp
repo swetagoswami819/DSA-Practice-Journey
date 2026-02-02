@@ -24,17 +24,24 @@ using namespace std;
 
 class Solution{
     public : 
-    bool binarySearch(vector<vector<int>>&nums , int target){
-        int n = nums.size();
-        int m = nums[0].size();
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                if(nums[i][j]==target){
-                    return true;
-                }
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int n =matrix.size();
+        int m =matrix[0].size();
+        int row = 0;
+        int col = m-1;
+
+        while(row<n && col>=0){
+            if(matrix[row][col]==target){
+                return true;
+            }
+            else if(matrix[row][col]<target){
+                row++;
+            }
+            else{
+                col--;
             }
         }
-        return false;
+        return false;   
     }
 };
 
@@ -43,6 +50,6 @@ int main(){
     int m = 4;
     vector<vector<int>>nums = {{1, 4, 7, 11, 15},{2, 5, 8, 12, 19},{3, 6, 9, 16, 22}};
     Solution sol;
-    cout<<sol.binarySearch(nums , 8);
+    cout<<sol.searchMatrix(nums , 8);
     return 0;
 }

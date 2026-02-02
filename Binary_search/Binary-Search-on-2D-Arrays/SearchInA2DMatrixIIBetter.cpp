@@ -24,15 +24,28 @@ using namespace std;
 
 class Solution{
     public : 
+    bool bs(vector<int>&nums , int target , int m){
+        int low = 0;
+        int high =m-1;
+        while(low<=high){
+            int mid = (low+high)/2;
+            if(nums[mid]==target){
+                return true;
+            }
+            else if(nums[mid]<target){
+                low=mid+1;
+            }
+            else{
+                high = mid-1;
+            }
+        }
+        return false;
+    }
     bool binarySearch(vector<vector<int>>&nums , int target){
         int n = nums.size();
         int m = nums[0].size();
         for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                if(nums[i][j]==target){
-                    return true;
-                }
-            }
+            return bs(nums[i], target ,m);
         }
         return false;
     }
